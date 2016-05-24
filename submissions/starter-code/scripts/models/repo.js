@@ -7,9 +7,13 @@
     /* DONE: How would you like to fetch your repos? Someone say AJAX!?
        Don't forget to call the callback! */
     $.ajax({
-      url: 'http://api.github.com/users/shaallfar/repos?sort=updated',
+      url: 'https://api.github.com/users/' + userName + '/repos?sort=updated',
       type: 'GET',
-      success: callback
+      headers: {'Authorization': 'token ' + githubToken},
+      success: function(data, message, xhr) {
+        repos.all = data;
+        callback();
+      }
     });
   };
 
