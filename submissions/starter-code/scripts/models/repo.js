@@ -6,7 +6,11 @@
   repos.requestRepos = function(callback) {
     /* TODO: How would you like to fetch your repos? Someone say AJAX!?
        Don't forget to call the callback! */
-
+    $.ajax({
+      url: 'http://api.github.com/users/shaallfar/repos?sort=updated',
+      type: 'GET',
+      success: callback
+    });
   };
 
   repos.with = function(attr) {
